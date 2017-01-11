@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  
+  links:Array<String>;
 
-  constructor() { }
+  constructor() { 
+
+    this.links=["home","about","signup","login"];
+  }
 
   ngOnInit() {
   }
-
+  
 }
+
+
+
