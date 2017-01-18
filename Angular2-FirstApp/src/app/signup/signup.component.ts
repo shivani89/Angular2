@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder,FormGroup} from '@angular/forms';
+
 
 @Component({
   selector: 'app-signup',
@@ -11,5 +13,19 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
   }
+  Countries=[{"code":"IN","name":"India"},{"code":"US","name":"United States"},{"code":"CN","name":"Canada"},{"code":"Aus","name":"Australia"}];
+  register={
+
+  }
+ registerUser(){
+   console.log(this.register);
+ }
+ submitForm(form:any){
+   console.log(form);
+ }
 
 }
+
+
+  
+  
