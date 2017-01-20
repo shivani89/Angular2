@@ -1,31 +1,45 @@
-<form #name="ngForm" class="form-horizontal" name="registerForm" (ngSubmit)="submitForm(name.value)">
-  <div class="form-group">
+<form class="form-horizontal" (ngSubmit)="submitForm(registerForm.value)" novalidate [formGroup]="registerForm">
+  <div class="form-group" [ngClass]="{'has-error':!registerForm.controls['firstName'].valid &&!registerForm.controls['firstName'].pristine}">
       <label class="control-label col-sm-2">First Name:</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control"  placeholder="FirstName" name="Enter firstname" required [(ngModel)]="register.FirstName">
+      <div class="col-sm-8">
+        <input type="text" class="form-control" placeholder="First Name" [formControl]="registerForm.controls['firstName']">
+      </div>
+      <div *ngIf="!registerForm.controls['firstName'].valid">Please enter maximum 10 charecters</div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Submit</button>
       </div>
     </div>
+</form>
+
+<form #name="ngForm" class="form-horizontal" name="registerForm" (ngSubmit)="submitForm(name.value)">
+  
     <div class="form-group">
       <label class="control-label col-sm-2" >Last Name:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control"  placeholder="LastName" name="Enter lastname" [(ngModel)]="register.lastName">
+        <input type="text" class="form-control"  placeholder="LastName" name="lastName" [formControl]="registerForm.controls['lastName']">
+        <div *ngIf="!registerForm.controls['lastName'].valid">Please enter minimum 10 charecters</div>
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2" for="email">Email:</label>
       <div class="col-sm-10">
-        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" [(ngModel)]="register.email">
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" [formControl]="registerForm.controls['email']">
+        <div *ngIf="registerForm.controls['email'].hasError('required') && registerForm.controls['email'].touched">Please enter an email.</div>
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2" for="pwd">Password:</label>
       <div class="col-sm-10">          
-        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password" [(ngModel)]="register.password">
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password" [formControl]="registerForm.controls['password']">
+        <div *ngIf="registerForm.controls['password'].hasError('required') && registerForm.controls['password'].touched">Please enter a password.</div>
+        <!--<div *ngIf="!registerForm.controls['password'].valid" >Maximum length is 15 charecters.</div>-->
       </div>
     </div>
 
     <div class="form-group">
-      <label class="control-label col-sm-2" for="country">Select Country:</label>
+      <label class="control-label col-sm-2" for="pwd">Select Country</label>
       <div class="col-sm-10">          
         <select name="country" [(ngModel)]="register.country">
           <option *ngFor="let country of Countries" [ngValue]="country.code">{{country.name}}</option>
@@ -33,14 +47,14 @@
          </div>
     </div>
     <div class="form-group">
-      <label class="control-label col-sm-2" for="gender">Gender:</label>
+      <label class="control-label col-sm-2" for="pwd">Gender</label>
       <div class="col-sm-10">          
-       <input type="radio" name="gender" [(ngModel)]="register.Gender" value="m">Male
-       <input type="radio" name="gender" [(ngModel)]="register.Gender" value="f">Female
+       <input type="radio" name="gender" [(ngModel)]="register.Gender" value="M">Male
+       <input type="radio" name="gender" [(ngModel)]="register.Gender" value="F">Female
          </div>
     </div>
     <div class="form-group">
-      <label class="control-label col-sm-2" for="terms">I Agree</label>
+      <label class="control-label col-sm-2" for="pwd">I Agree</label>
       <div class="col-sm-10">          
        <input type="checkbox" name="I Agree" [(ngModel)]="register.agree">
          </div>
