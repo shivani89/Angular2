@@ -1,0 +1,79 @@
+
+<!--<button id="alert-service" (click)="logIt()">log Service</button>-->
+<div class="container">
+  <div class="row" >
+    <div class="col-md-4 col-xs-4 pets-grid" *ngFor = "let pets of petsData">
+        <h4>Name: {{pets.name | uppercase}}</h4>
+        <div><img [src]="[pets.photo]" class="img-responsive"></div>
+        <p>Description: Favourite Food is {{pets.favFoods}}</p>
+        <p>Birth: {{pets.birthYear}}</p>
+        <p>Species: {{pets.species}}</p>
+    </div>
+    <div class="col-md-4 col-xs-4 ">
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal"><img  class="img-responsive" [src]="['http://s3.amazonaws.com/static.graphemica.com/glyphs/i500s/000/007/186/original/002B-500x500.png?1275320936']"/></button>
+    </div>
+    
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add a Pet</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form col-md-8>
+         <div class="form-group">
+            <label for="pet-name">Pet Name:</label>
+            <input type="text" class="form-control" id="pet-name" placeholder="Enter name" name="name" [(ngModel)] = "newPetsData.name" >
+          </div>
+
+          <div class="form-group">
+            <label for="pet-description">Pet Description:</label>
+            <textarea class="form-control" id="pet-description" rows="3" [(ngModel)] = "newPetsData.favFoods" name="favFoods"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="pet-species">Species:</label>
+            <select class="form-control" id="pet-species">
+              <option *ngFor = "let pets of petsData" [(ngModel)] = "newPetsData.species" name="species">{{pets.species}}</option>
+            </select>
+          </div>
+
+          <!--<div class="form-group">
+            <label for="pet-breed">Breed:</label>
+            <select class="form-control" id="pet-breed">
+              <option *ngFor = "let pets of petsData">{{pets.species}}</option>
+            </select>
+          </div>-->
+
+          <div class="form-group">
+            <label for="pet-birth">Birth Year:</label>
+            <select class="form-control" id="pet-birth">
+              <option *ngFor = "let pets of petsData" [(ngModel)] = "newPetsData.birthYear" name="birthYear">{{pets.birthYear}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="pet-picture">Upload Picture:</label>
+            <input type="file" class="form-control-file" id="pet-picture" name="photo" aria-describedby="fileHelp" [(ngModel)] = "newPetsData.photo" >
+            <!--<small id="fileHelp" class="form-text text-muted"></small>-->
+          </div>
+         </form>
+       </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="fbPostData(newPetsData)" data-dismiss="modal">Add Pet</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  

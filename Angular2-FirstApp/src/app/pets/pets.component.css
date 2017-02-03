@@ -1,0 +1,23 @@
+
+#pets-grid{
+
+    border: 1px solid lightslategray;
+    padding: 5px, 5px;
+    
+}
+
+.thumbnail img {
+      
+    max-height: 100%;
+    max-width: 100%;
+    position: relative;
+
+}
+
+
+
+#add-pets{
+
+    float: left;
+    display: inline;
+}

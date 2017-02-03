@@ -4,6 +4,7 @@ import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -12,7 +13,10 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
-import { LookupService } from './services/lookup.service';
+import { LookupService } from './services/lookup.service'; 
+import { ProdutcsComponent } from './produtcs/produtcs.component';
+import { PetsComponent } from './pets/pets.component';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +27,9 @@ import { LookupService } from './services/lookup.service';
     HomeComponent,
     AboutComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    ProdutcsComponent,
+    PetsComponent
   ],
   imports: [
     BrowserModule,
@@ -32,10 +38,13 @@ import { LookupService } from './services/lookup.service';
     HttpModule,
     RouterModule,
     RouterModule.forRoot([
-      {path:"home",component:HomeComponent},
-      {path:"about",component:AboutComponent},
-      {path:"signup",component:SignupComponent},
-      {path:"login",component:LoginComponent}
+      {path:"Home",component:HomeComponent},
+      {path:"About",component:AboutComponent},
+      {path:"Products",component:ProdutcsComponent},
+      {path:"Pets",component:PetsComponent},
+      {path:"login",component:LoginComponent},
+      {path:"register",component:SignupComponent},
+      {path:"", redirectTo: '/Home', pathMatch: 'prefix'}
     ])
   ],
   providers: [LookupService],

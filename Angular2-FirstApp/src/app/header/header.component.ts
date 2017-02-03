@@ -8,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   
   links:Array<String>;
+  
 
   constructor() { 
 
-    this.links=["home","about","signup","login"];
+    this.links=["Home","About","Products","Pets"];
+    
   }
 
   ngOnInit() {

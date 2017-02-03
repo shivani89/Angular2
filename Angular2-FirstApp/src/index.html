@@ -2,14 +2,31 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Angular2FirstApp</title>
+  <title>Pet Store</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  
 </head>
 <body>
   <app-root>Loading...</app-root>
+
+ <!--// to use firebase api to get and post data -->
+<script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDPh7jRd4DTb3VyeP2lbQlot_KoIrlrPJQ",
+    authDomain: "petdata-f9787.firebaseapp.com",
+    databaseURL: "https://petdata-f9787.firebaseio.com",
+    storageBucket: "petdata-f9787.appspot.com",
+    messagingSenderId: "678812416619"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script rel="javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
